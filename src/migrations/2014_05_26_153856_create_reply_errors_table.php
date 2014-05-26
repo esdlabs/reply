@@ -15,8 +15,8 @@ class CreateReplyErrorsTable extends Migration {
         Schema::create('reply_errors', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->string('error_code');
-            $table->integer('response_code')->unique();
+            $table->string('error_code')->unique();
+            $table->integer('response_code');
             $table->string('description');
             $table->dateTime('created_at');
         });
