@@ -1,0 +1,23 @@
+{
+    "name": "esdlabs/reply",
+    "description": "",
+    "authors": [
+        {
+            "name": "Edgar Nadal",
+            "email": "edgarnadal@esd.com.do"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.1.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Esdlabs\\Reply\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
