@@ -39,7 +39,7 @@ class Reply {
      * 
      * @author Victor Cruz <victorcruz@esd.com.do>
      * @param string $error_code            Error code
-     * @param string $description           Error descriptionHTTP response
+     * @param string $description           Error description
      *
      * @return array
      */
@@ -49,6 +49,21 @@ class Reply {
             'error_code' => $error_code,
             'description' => $description
         );
+    }
+
+    /**
+     * Return custom error response
+     * 
+     * @author Victor Cruz <victorcruz@esd.com.do>
+     * @param string  $description           Error description
+     * @param integer $http_response_code    HTTP response code
+     *
+     * @return Mixed
+     */
+    public function customError($description, $http_response_code = 500)
+    {
+        $response = $this->buildResponseBody('UNK-ERROR', $description);
+        return \Response::make($response, $http_response_code);
     }
 
 }
