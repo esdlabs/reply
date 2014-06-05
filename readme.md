@@ -15,7 +15,7 @@ Features
 Version
 ----
 
-1.0
+1.0.1
 
 
 Installation
@@ -70,7 +70,7 @@ reply_errors
 - response_code
 - description
 
-Define your errors at the errors table (, for example if you want to return.
+Define your errors at the errors table as follow:
 
 |  id | error_code  | response_code  | description  |
 |---|---|---|---|---|

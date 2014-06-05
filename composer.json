@@ -2,10 +2,11 @@
     "name": "esdlabs/reply",
     "version": "v1.0.0",
     "description": "",
+    "version": "v1.0.1",
     "authors": [
         {
-            "name": "Edgar Nadal",
-            "email": "edgarnadal@esd.com.do"
+            "name": "Victor Cruz",
+            "email": "victorcruz@esd.com.do"
         }
     ],
     "require": {
