@@ -1,7 +1,7 @@
 {
     "name": "esdlabs/reply",
-    "version": "v1.0.2",
-    "description": "",
+    "version": "v1.0.3",
+    "description": "Manage your RESTful errors easier than ever",
     "authors": [
         {
             "name": "Victor Cruz",
