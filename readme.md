@@ -15,7 +15,7 @@ Features
 Version
 ----
 
-1.0.1
+1.0.2
 
 
 Installation
@@ -26,7 +26,7 @@ Installation
 Open your composer.json file and add the following to the require array: 
 
 ```js
-"esdlabs/reply": "dev-master"
+"esdlabs/reply": "1.*"
 ```
 
 **Install dependencies**
