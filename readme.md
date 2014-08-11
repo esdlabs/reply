@@ -1,7 +1,7 @@
 esdlabs/reply
 =========
 
-Laravel package that makes RESTful error handling easier.
+Package that makes RESTful error handling easier than ever.
 
 Features
 ----
@@ -15,7 +15,7 @@ Features
 Version
 ----
 
-1.0.2
+1.0.3
 
 
 Installation
