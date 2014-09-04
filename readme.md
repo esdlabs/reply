@@ -124,7 +124,7 @@ HTTP/1.1 406 Not Acceptable
 
 {
     "error_code": "0x002",
-    "description"": "Invalid username or password",
+    "description"": "Valitation failed",
     "notes" : [
         "note 1", 
         "note 2"
