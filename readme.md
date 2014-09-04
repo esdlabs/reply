@@ -15,7 +15,7 @@ Features
 Version
 ----
 
-1.0.3
+1.0.4
 
 
 Installation
@@ -74,7 +74,7 @@ Define your errors at the errors table as follow:
 
 |  id | error_code  | response_code  | description  |
 |---|---|---|---|---|
-| 1  |  '0x001'  | 401   | 'Invalid username or password'  |
+| 1  |  '0x001'  | 400   | 'Invalid username or password'  |
 | 2  |  '0x002' | 406  | ' Valitation failed  |
 
 
@@ -93,15 +93,56 @@ class LoginController extends Controller {
         {
             return Reply::error('0x001');
         }
+        catch (AnotherException $e)
+        {
+            return Reply::error('0x002', array('note 1', 'note 2');
+        }
         catch (Exception $e)
         {
-            return Reply::customError('Custom error description', 500);
+            return Reply::customError('Custom error description', 500, "Note description");
         }
     }
 }
 
 ```
 
+
+HTTP Output
+----
+```javascript
+HTTP/1.1 400 Bad Request
+
+{
+    "error_code": "0x001",
+    "description"": "Invalid username or password"
+}
+
+```
+
+```javascript
+HTTP/1.1 406 Not Acceptable
+
+{
+    "error_code": "0x002",
+    "description"": "Invalid username or password",
+    "notes" : [
+        "note 1", 
+        "note 2"
+    ]
+}
+
+```
+
+```javascript
+HTTP/1.1 500 Internal Server Error
+
+{
+    "error_code": "UNK-ERROR",
+    "description"": "Custom error description",
+    "notes": "Note description"
+}
+
+```
 
 License
 ----
