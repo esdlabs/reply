@@ -18,18 +18,15 @@ class Reply {
     {
         $error = Error::where('error_code', '=', $error_code)->first();
         if ($error)
-            $response = $this->buildResponseBody($error->error_code, $error->description);
+            $response = $this->buildResponseBody($error->error_code, $error->description, $notes);
         else
         { 
-            $response = $this->buildResponseBody('UNK-ERROR', "Error $error_code not found on the database");
+            $response = $this->buildResponseBody('UNK-ERROR', "Error $error_code not found on the database", $notes);
             $http_response_code = 500;
         }
                         
         if (!$http_response_code)
-            $http_response_code = $error->response_code;
-
-        if ($notes)
-            $response['notes'] = $notes;
+            $http_response_code = $error->response_code;        
 
         return \Response::make($response, $http_response_code);
     }
@@ -40,15 +37,21 @@ class Reply {
      * @author Victor Cruz <victorcruz@esd.com.do>
      * @param string $error_code            Error code
      * @param string $description           Error description
+     * @param mixed $notes                  Note or array of notes
      *
      * @return array
      */
-    protected function buildResponseBody($error_code, $description)
+    protected function buildResponseBody($error_code, $description, $notes = false)
     {
-        return array(
+        $response = array(
             'error_code' => $error_code,
             'description' => $description
         );
+
+        if ($notes)
+            $response['notes'] = $notes;
+
+        return $response;
     }
 
     /**
@@ -57,12 +60,13 @@ class Reply {
      * @author Victor Cruz <victorcruz@esd.com.do>
      * @param string  $description           Error description
      * @param integer $http_response_code    HTTP response code
+     * @param mixed $notes                   Note or array of notes
      *
      * @return Mixed
      */
-    public function customError($description, $http_response_code = 500)
+    public function customError($description, $http_response_code = 500, $notes = false)
     {
-        $response = $this->buildResponseBody('UNK-ERROR', $description);
+        $response = $this->buildResponseBody('UNK-ERROR', $description, $notes);
         return \Response::make($response, $http_response_code);
     }
 
